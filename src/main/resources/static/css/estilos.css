@@ -106,4 +106,15 @@
 #tablaResumen tr:nth-child(even) {
     background-color: white;
     color: #87f29b;
+    
+#contenidoform {
+    position: absolute;
+    top: 72%;
+    left: 0;
+    height: 30%;
+    width: 35%;
+    background-color: #02D7FF;
+    color: black;
+    overflow: auto;
+}
 }
