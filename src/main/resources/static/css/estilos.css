@@ -29,22 +29,55 @@
     background: green;
     color: white;
 }
-#barraLateral {
+#barra {
     position: absolute;
     top: 12%;
     left: 0;
-    height: 81%;
-    width: 20%;
-    background-color: #8e27f6;
+    height: 60%;
+    width: 100%;
+    background-color: #02D7FF;
     color: black;
 }
 #contenido {
     position: absolute;
-    top: 12%;
-    left: 20%;
-    height: 81%;
-    width: 80%;
-    background-color: #24a1df;
+    top: 72%;
+    left: 0;
+    height: 40%;
+    width: 100%;
+    background-color: #D96C0D;
+    color: black;
+    overflow: auto;
+}
+
+#contenido1 {
+    position: absolute;
+    top: 72%;
+    left: 0;
+    height: 30%;
+    width: 35%;
+    background-color: #02D7FF;
+    color: black;
+    overflow: auto;
+}
+
+#contenido2 {
+    position: absolute;
+    top: 72%;
+    left: 35%;
+    height: 30%;
+    width: 30%;
+    background-color: #02D7FF;
+    color: black;
+    overflow: auto;
+}
+
+#contenido3 {
+    position: absolute;
+    top: 72%;
+    left: 65%;
+    height: 30%;
+    width: 35%;
+    background-color: #02D7FF;
     color: black;
     overflow: auto;
 }
