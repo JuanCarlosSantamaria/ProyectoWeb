@@ -1,13 +1,16 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
 package com.proyecto.service;
 
-/**
- *
- * @author david
- */
+import com.proyecto.domain.Auto;
+import java.util.List;
+
 public interface AutoService {
-    
+
+    public List<Auto> getArticulos(boolean activo);
+
+    public Auto getAuto(Auto auto);
+
+    public void save(Auto auto);
+
+    public void delete(Auto auto);
+
 }
