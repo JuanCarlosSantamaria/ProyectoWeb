@@ -1,15 +1,29 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
-<html>
-    <head>
-        <title>Car and Property Rentals</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://wwww.thymeleaf.org" 
+      xmlns:sec="http://thymeleaft.org/extras/spring-security">
+    <head th:replace="layout/plantilla :: head">
+        <title>TechShop</title>
     </head>
     <body>
-        <div>TODO write content</div>
+        <header th:replace="layout/plantilla :: header"/>
+        <div class="container">
+            <h2 th:text="#{index.titulo}">Nuestros Autos</h2>            
+            <div class="row row-cols-3" th:if="${autos != null and !autos.empty}">
+                <div class="card" th:each="auto : ${autos}" >
+               
+                    <div class="card-body">
+                        <h5 class="card-title">[[${auto.nombre}]]</h5>
+                        <h6 class="card-subtitle mb-2 text-muted text-end">[[${new java.text.DecimalFormat('¢#,##0.00').format(auto.precio)}]]</h6>
+                        <a class="card-link" th:href="@{/carrito/agregar/} + ${auto.idAuto}">[[#{auto.comprar}]]</a>
+                        <p class="card-text">[[${auto.modelo}]]</p>                        
+                    </div>
+                </div>                
+            </div>
+            <div th:if="${autos == null or autos.empty}"  th:text="#{auto.no_mostrar}">
+                No tenemos lista de autos que mostrar...
+            </div>
+        </div>
+        <footer th:replace="layout/plantilla :: footer"/>
     </body>
 </html>

@@ -8,6 +8,6 @@ package com.proyecto.dao;
  *
  * @author david
  */
-public interface CabanasDao {
+public interface ClienteDao {
     
 }

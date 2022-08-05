@@ -15,8 +15,8 @@ public class Auto implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private long idAuto;
-    private String descripcion;
-    private String detalle;
+    private String nombre;
+    private String modelo;
     private double precio;
     private int existencias;
     private boolean activo;
@@ -24,9 +24,9 @@ public class Auto implements Serializable {
     public Auto() {
     }
 
-    public Auto(String descripcion, String detalle, double precio, int existencias, boolean activo) {
-        this.descripcion = descripcion;
-        this.detalle = detalle;
+    public Auto(String nombre, String modelo, double precio, int existencias, boolean activo) {
+        this.nombre = nombre;
+        this.modelo = modelo;
         this.precio = precio;
         this.existencias = existencias;
         this.activo = activo;

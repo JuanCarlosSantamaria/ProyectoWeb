@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface AutoService {
 
-    public List<Auto> getArticulos(boolean activo);
+    public List<Auto> getAutos(boolean activo);
 
     public Auto getAuto(Auto auto);
 

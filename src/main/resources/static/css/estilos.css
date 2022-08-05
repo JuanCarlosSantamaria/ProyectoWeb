@@ -101,9 +101,9 @@
 
 #contenido6 {
     position: absolute;
-    top: 50%;
+    top: 65%;
     left: 0;
-    height: 55%;
+    height: 35%;
     width: 100%;
     background-color: #02D7FF;
     color: black;
@@ -136,13 +136,13 @@
     
 #contenidoform {
     position: absolute;
-    top: 72%;
+    top: 50%;
     left: 0;
-    height: 30%;
+    height: 50%;
     width: 35%;
     background-color: #02D7FF;
     color: black;
-    overflow: auto;
+  
 }
 
 }
