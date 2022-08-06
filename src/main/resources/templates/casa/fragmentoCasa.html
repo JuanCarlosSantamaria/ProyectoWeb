@@ -5,11 +5,182 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Car and Property Rentals</title>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     </head>
     <body>
-        <div>TODO write content</div>
+        <section th:fragment="botonesAgregar" class="py-4 mb-4 bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3" sec:authorize="hasRole('ROLE_ADMIN')">   
+                        <button 
+                            type="button" 
+                            class="btn btn-primary btn-block" 
+                            data-bs-toggle="modal" 
+                            data-bs-target="#agregarCasa">
+                            <i class="fas fa-plus"></i> [[#{accion.agregar}]]
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section th:fragment="listadoCasas" id="casas">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>[[#{casa.titulo}]]</h4>
+                            </div>
+                            <div th:if="${casas != null and !casas.empty}">
+                                <table class="table table-stryped">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th>#</th>
+                                            <th th:text="#{casa.nombre}">Nombre</th>
+                                            <th th:text="#{casa.modelo}">Modelo</th>
+                                            <th th:text="#{casa.precio}">Precio</th>
+                                            <th th:text="#{casa.existencias}">Existencias</th>
+
+                                            <th></th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="casa, contador : ${casas}">
+                                            <td>[[${contador.count}]]</td>
+                                            <td>[[${casa.nombre}}]]</td>
+                                            <td>[[${casa.modelo}}]]</td>
+                                            <td>[[${casa.precio}}]]</td>
+                                            <td>[[${casa.existencias}}]]</td>
+
+                                            <td class="text-end">[[${new java.text.DecimalFormat('$#,##0.00').format(casa.precio)}]]</td>
+                                            <td>
+                                                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/casa/eliminar/}+${casa.idCasa}"
+                                                   class="btn btn-danger">
+                                                    <i class="fas fa-angle-double-right"></i> [[#{accion.eliminar}]]
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/casa/modificar/}+${casa.idCasa}"
+                                                   class="btn btn-success">
+                                                    <i class="fas fa-angle-double-right"></i> [[#{accion.actualizar}]]
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="text-center p-2" th:if="${casas == null or casas.empty}">
+                                <span th:text="#{casa.no_mostrar}">Lista vacía</span>
+                            </div>
+                        </div>
+                    </div>                                
+                </div>
+            </div>
+        </section>
+        <section th:fragment="agregarCasa">
+            <div id="agregarCasa" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header bg-info text-white">
+                            <h5 class="modal-title" th:text="#{accion.agregar}">Agregar Casa</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div> 
+                        <form th:action="@{/casa/guardar}" th:object="${casa}"
+                              method="POST" class="was-validated">
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="nombre" th:text="#{casa.nombre}">Nombre</label>
+                                    <input type="text" class="form-control" name="nombre" required="true">
+                                </div>
+                                <div class="form-group">
+                                    <label for="modelo" th:text="#{casa.modelo}">Apellidos</label>
+                                    <input type="text" class="form-control" name="modelo" required="true">
+                                </div>
+                                <div class="form-group">
+                                    <label for="precio" th:text="#{casa.precio}">Precio</label>
+                                    <input type="number" class="form-control" name="precio" required="true">
+                                </div>
+                                <div class="form-group">
+                                    <label for="existencia" th:text="#{casa.existencia}">Existencias</label>
+                                    <input type="number" class="form-control" name="existencia">
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-primary" type="submit" th:text="#{accion.guardar}">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section th:fragment="editarCasa">            
+            <form method="POST"
+                  th:action="@{/casa/guardar}"
+                  th:object="${casa}"
+                  class="was-validated">
+                <input type="hidden" name="idCasa" th:field="*{idCasa}"/>
+                <section th:replace="casa/fragmentosCasa :: botonesEditar"/> 
+                <div id="details">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4>[[#{accion.actualizar}]]</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label for="nombre" th:text="#{casa.nombre}">Nombre: </label>
+                                            <input type="text" class="form-control" name="nombre" th:field="*{nombre}"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="modelo" th:text="#{casa.modelo}">Modelo: </label>
+                                            <input type="text"  class="form-control" name="modelo" th:field="*{modelo}"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="precio" th:text="#{casa.precio}">Precio: </label>
+                                            <input type="number"  class="form-control" name="precio" th:field="*{precio}"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="existencia" th:text="#{casa.existencia}">Existencias: </label>
+                                            <input type="number"  class="form-control" name="existencia" th:field="*{existencia}"/>
+                                        </div>                      
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </section>
+        <section th:fragment="botonesEditar">
+            <div id="actions" class="py-4 mb-4 bg-light">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <a th:href="@{/casa/listado}" class="btn btn-ligth btn-block">
+                                <i class="fas fa-arrow-left"></i> [[#{accion.regresar}]]
+                            </a>
+                        </div>
+                        <div class="col-md-3">
+                            <button type="submit" class="btn btn-success btn-block">
+                                <i class="fas fa-check"></i> [[#{accion.guardar}]]
+                            </button>
+                        </div>
+                        <div class="col-md-3">
+                            <a th:href="@{/casa/eliminar/}+${casa.idCasa}"
+                               class="btn btn-danger btn-block">
+                                <i class="fas fa-trash"></i> [[#{accion.eliminar}]]
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </body>
 </html>

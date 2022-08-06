@@ -21,7 +21,7 @@
             </div>
         </section>
 
-        <section th:fragment="listadoCabanass" id="cabana">
+        <section th:fragment="listadoCabanas" id="cabanas">
             <div class="container">
                 <div class="row">
                     <div class="col-md-9">
@@ -35,10 +35,10 @@
                                         <tr>
                                             <th>#</th>
                                             <th th:text="#{cabana.nombre}">Nombre</th>
-                                            <th th:text="#{cabana.detalle}">Detalle</th>
+                                            <th th:text="#{cabana.modelo}">Modelo</th>
                                             <th th:text="#{cabana.precio}">Precio</th>
                                             <th th:text="#{cabana.existencias}">Existencias</th>
-
+                                            
                                             <th></th>
                                             <th></th>
                                         </tr>
@@ -47,10 +47,10 @@
                                         <tr th:each="cabana, contador : ${cabanas}">
                                             <td>[[${contador.count}]]</td>
                                             <td>[[${cabana.nombre}}]]</td>
-                                            <td>[[${cabana.detalle}}]]</td>
+                                            <td>[[${cabana.modelo}}]]</td>
                                             <td>[[${cabana.precio}}]]</td>
                                             <td>[[${cabana.existencias}}]]</td>
-
+                                           
                                             <td class="text-end">[[${new java.text.DecimalFormat('$#,##0.00').format(cabana.precio)}]]</td>
                                             <td>
                                                 <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/cabana/eliminar/}+${cabana.idCabana}"
@@ -92,8 +92,8 @@
                                     <input type="text" class="form-control" name="nombre" required="true">
                                 </div>
                                 <div class="form-group">
-                                    <label for="detalle" th:text="#{cabana.detalle}">Detalle</label>
-                                    <input type="text" class="form-control" name="detalle" required="true">
+                                    <label for="modelo" th:text="#{cabana.modelo}">Apellidos</label>
+                                    <input type="text" class="form-control" name="modelo" required="true">
                                 </div>
                                 <div class="form-group">
                                     <label for="precio" th:text="#{cabana.precio}">Precio</label>
@@ -103,7 +103,7 @@
                                     <label for="existencia" th:text="#{cabana.existencia}">Existencias</label>
                                     <input type="number" class="form-control" name="existencia">
                                 </div>
-
+                    
                             </div>
                             <div class="modal-footer">
                                 <button class="btn btn-primary" type="submit" th:text="#{accion.guardar}">Guardar</button>
@@ -134,8 +134,8 @@
                                             <input type="text" class="form-control" name="nombre" th:field="*{nombre}"/>
                                         </div>
                                         <div class="form-group">
-                                            <label for="detalle" th:text="#{cabana.detalle}">Detalle: </label>
-                                            <input type="text"  class="form-control" name="detalle" th:field="*{detalle}"/>
+                                            <label for="modelo" th:text="#{cabana.modelo}">Modelo: </label>
+                                            <input type="text"  class="form-control" name="modelo" th:field="*{modelo}"/>
                                         </div>
                                         <div class="form-group">
                                             <label for="precio" th:text="#{cabana.precio}">Precio: </label>
@@ -153,7 +153,7 @@
                 </div>
             </form>
         </section>
-        <section th:fragment="botonesEditar">
+                <section th:fragment="botonesEditar">
             <div id="actions" class="py-4 mb-4 bg-light">
                 <div class="container">
                     <div class="row">
