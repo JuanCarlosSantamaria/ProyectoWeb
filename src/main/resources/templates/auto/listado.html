@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:sec="http://thymeleaf/org/extras/spring-security">
     <head th:replace="layout/plantilla :: head">
-        <title>techShop</title>
+        <title>Car and Property Rentals</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link th:href="@{/css/menu.css}" rel="stylesheet" type="text/css"/>
@@ -9,10 +9,10 @@
     <body>
         <header th:replace="layout/plantilla :: header" />
 
-<section th:replace="auto/fragmentosAuto :: botonesAgregar"/>
-<section th:replace="auto/fragmentosAuto :: agregarAuto"/>
-<section th:replace="auto/fragmentosAuto :: listadoAutos"/>
+        <section th:replace="auto/fragmentosAuto :: botonesAgregar"/>
+        <section th:replace="auto/fragmentosAuto :: agregarAuto"/>
+        <section th:replace="auto/fragmentosAuto :: listadoAutos"/>
 
-<footer th:replace="layout/plantilla :: footer" />
+        <footer th:replace="layout/plantilla :: footer" />
     </body>
 </html>
