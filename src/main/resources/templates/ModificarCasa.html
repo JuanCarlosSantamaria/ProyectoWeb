@@ -1,0 +1,32 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head th:replace="layout/plantilla :: head">
+        <title>Car and Property Rentals</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <header th:replace="layout/plantilla :: header"/>
+        <h2>Datos del casa</h2>
+        <a th:href="@{/}">Regresar</a>
+        <br>
+            <br>
+                <form th:action="@{/guardarCasa}"
+                      method="POST"
+                      th:object="${casa}">
+                    <input type="hidden" name="idCasa" th:field="*{idCasa}"/>
+                    <label for="nombre">Nombre: </label>
+                    <input type="text" id="nombre" name="nombre" th:field="*{nombre}"/>
+                    <br>
+                        <label for="modelo">Modelo: </label>
+                        <input type="text" id="modelo" name="modelo" th:field="*{modelo}"/>
+                        <br>
+                            <label for="precio">precio: </label>
+                            <input type="number" id="precio" name="precio" th:field="*{precio}"/>
+                            <br>
+                                <label for="existencias">existencias: </label>
+                                <input type="tel" id="existencias" name="existencias" th:field="*{existencias}"/>
+                                <input type="submit" name="guardar" value="Guardar"/>
+                                </form>
+                                <footer th:replace="layout/plantilla :: footer"/>
+                                </body>
+                                </html>
