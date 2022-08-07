@@ -1,13 +1,16 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
 package com.proyecto.service;
 
-/**
- *
- * @author david
- */
+import com.proyecto.domain.Casa;
+import java.util.List;
+
 public interface CasaService {
-    
+
+    public List<Casa> getCasas(boolean activo);
+
+    public Casa getCasa(Casa casa);
+
+    public void save(Casa casa);
+
+    public void delete(Casa casa);
+
 }
