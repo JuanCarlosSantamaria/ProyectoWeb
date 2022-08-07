@@ -1,13 +1,16 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
 package com.proyecto.service;
 
-/**
- *
- * @author david
- */
+import com.proyecto.domain.Cabana;
+import java.util.List;
+
 public interface CabanaService {
-    
+
+    public List<Cabana> getCabanas(boolean activo);
+
+    public Cabana getCabana(Cabana cabana);
+
+    public void save(Cabana cabana);
+
+    public void delete(Cabana cabana);
+
 }

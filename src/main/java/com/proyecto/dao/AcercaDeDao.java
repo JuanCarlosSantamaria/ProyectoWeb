@@ -4,10 +4,9 @@
  */
 package com.proyecto.dao;
 
-/**
- *
- * @author david
- */
-public interface ContactoDao {
+import com.proyecto.domain.AcercaDe;
+import org.springframework.data.repository.CrudRepository;
+
+public interface AcercaDeDao extends CrudRepository<AcercaDe, Long>{
     
 }
