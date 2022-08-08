@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
+
 <html>
     <head>
         <title>Car and Property Rentals</title>
@@ -50,10 +47,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                     <tbody>
                                         <tr th:each="auto, contador : ${autos}">
                                             <td>[[${contador.count}]]</td>
-                                            <td>[[${auto.nombre}}]]</td>
-                                            <td>[[${auto.modelo}}]]</td>
-                                            <td>[[${auto.precio}}]]</td>
-                                            <td>[[${auto.existencias}}]]</td>
+                                            <td>[[${auto.nombre}]]</td>
+                                            <td>[[${auto.modelo}]]</td>
+                                            <td>[[${auto.precio}]]</td>
+                                            <td>[[${auto.existencias}]]</td>
                                            
                                             <td class="text-end">[[${new java.text.DecimalFormat('$#,##0.00').format(auto.precio)}]]</td>
                                             <td>
@@ -104,8 +101,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                     <input type="number" class="form-control" name="precio" required="true">
                                 </div>
                                 <div class="form-group">
-                                    <label for="existencia" th:text="#{auto.existencia}">Existencias</label>
-                                    <input type="number" class="form-control" name="existencia">
+                                    <label for="existencias" th:text="#{auto.existencias}">Existencias</label>
+                                    <input type="number" class="form-control" name="existencias">
                                 </div>
                     
                             </div>
@@ -146,8 +143,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                             <input type="number"  class="form-control" name="precio" th:field="*{precio}"/>
                                         </div>
                                         <div class="form-group">
-                                            <label for="existencia" th:text="#{auto.existencia}">Existencias: </label>
-                                            <input type="number"  class="form-control" name="existencia" th:field="*{existencia}"/>
+                                            <label for="existencias" th:text="#{auto.existencias}">Existencias: </label>
+                                            <input type="number"  class="form-control" name="existencias" th:field="*{existencias}"/>
                                         </div>                      
                                     </div>
                                 </div>
