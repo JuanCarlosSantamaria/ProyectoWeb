@@ -36,9 +36,10 @@
                                             <th>#</th>
                                             <th th:text="#{cabana.nombre}">Nombre</th>
                                             <th th:text="#{cabana.detalle}">Detalle</th>
-                                            <th th:text="#{cabana.precio}">Precio</th>
+                                            <th th:text="#{cabana.precio}" sec:authorize="hasRole('ROLE_ADMIN')" >Precio</th>
                                             <th th:text="#{cabana.existencias}">Existencias</th>
-                                            
+                                            <th th:text="#{cabana.activo}" sec:authorize="hasRole('ROLE_ADMIN')">Estado</th>
+                                            <th th:text="#{cabana.imagen}">Imagen</th>
                                             <th></th>
                                             <th></th>
                                         </tr>
@@ -46,11 +47,12 @@
                                     <tbody>
                                         <tr th:each="cabana, contador : ${cabanas}">
                                             <td>[[${contador.count}]]</td>
-                                            <td>[[${cabana.nombre}}]]</td>
-                                            <td>[[${cabana.detalle}}]]</td>
-                                            <td>[[${cabana.precio}}]]</td>
-                                            <td>[[${cabana.existencias}}]]</td>
-                                           
+                                            <td>[[${cabana.nombre}]]</td>
+                                            <td>[[${cabana.detalle}]]</td>
+                                            <td sec:authorize="hasRole('ROLE_ADMIN')">[[${cabana.precio}]]</td>
+                                            <td>[[${cabana.existencias}]]</td>
+                                            <td sec:authorize="hasRole('ROLE_ADMIN')">[[${cabana.activo}]]</td>
+                                            <td><img th:src="${cabana.imagen}" class="rounded mx-auto d-block" width="50" height="50"></td>                       
                                             <td class="text-end">[[${new java.text.DecimalFormat('$#,##0.00').format(cabana.precio)}]]</td>
                                             <td>
                                                 <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/cabana/eliminar/}+${cabana.idCabana}"
@@ -100,10 +102,17 @@
                                     <input type="number" class="form-control" name="precio" required="true">
                                 </div>
                                 <div class="form-group">
-                                    <label for="existencia" th:text="#{cabana.existencia}">Existencias</label>
+                                    <label for="existencia" th:text="#{cabana.existencias}">Existencias</label>
                                     <input type="number" class="form-control" name="existencia">
                                 </div>
-                    
+                                <div class="form-check">
+                                    <label class="form-check-label" for="activo" th:text="#{cabana.activo}">Activo: </label>
+                                    <input type="checkbox" class="form-check-input" id="activo">
+                                </div>
+                                <div class="form-group">
+                                    <label for="imagen" th:text="#{cabana.imagen}">Imagen</label>
+                                    <input type="text" class="form-control" name="imagen" required="true">
+                                </div>
                             </div>
                             <div class="modal-footer">
                                 <button class="btn btn-primary" type="submit" th:text="#{accion.guardar}">Guardar</button>
@@ -144,7 +153,15 @@
                                         <div class="form-group">
                                             <label for="existencia" th:text="#{cabana.existencia}">Existencias: </label>
                                             <input type="number"  class="form-control" name="existencia" th:field="*{existencia}"/>
-                                        </div>                      
+                                        </div>  
+                                        <div class="form-check">
+                                            <label for="activo" th:text="#{cabana.activo}">Activo: </label>
+                                            <input type="checkbox" class="form-check-input" name="activo" th:field="*{activo}" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="imagen" th:text="#{cabana.imagen}">Imagen: </label>
+                                            <input type="text" class="form-control" name="imagen" th:field="*{imagen}"/>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -153,7 +170,7 @@
                 </div>
             </form>
         </section>
-                <section th:fragment="botonesEditar">
+        <section th:fragment="botonesEditar">
             <div id="actions" class="py-4 mb-4 bg-light">
                 <div class="container">
                     <div class="row">

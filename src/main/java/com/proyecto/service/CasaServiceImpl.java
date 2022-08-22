@@ -24,11 +24,11 @@ public class CasaServiceImpl implements CasaService {
         return lista;
     }
 
-        @Override
+    @Override
     @Transactional(readOnly = true)
     public Casa getCasa(Casa casa) {
         return casaDao.findById(casa.getIdCasa()).orElse(null);
-        
+
     }
 
     @Override
@@ -43,7 +43,4 @@ public class CasaServiceImpl implements CasaService {
         casaDao.delete(casa);
     }
 
-
-  
 }
-

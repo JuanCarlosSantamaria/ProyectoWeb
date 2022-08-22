@@ -11,36 +11,51 @@
             <h2 th:text="#{index.titulo}">Nuestros Autos</h2>            
             <div class="row row-cols-3" th:if="${autos != null and !autos.empty}">
                 <div class="card" th:each="auto : ${autos}" >
-               
-                    <div class="card-body">
-                        <h5 class="card-title">[[${auto.nombre}]]</h5>
-                        <h6 class="card-subtitle mb-2 text-muted text-end">[[${new java.text.DecimalFormat('¢#,##0.00').format(auto.precio)}]]</h6>
-                        <a class="card-link" th:href="@{/carrito/agregar/} + ${auto.idAuto}">[[#{auto.comprar}]]</a>
-                        <p class="card-text">[[${auto.modelo}]]</p>                        
-                    </div>
+                    <img th:src="${auto.imagen}" class="rounded mx-auto d-block" width="320" height="200">
+                        <div class="card-body">
+                            <h5 class="card-title">[[${auto.nombre}]]</h5>
+                            <h6 class="card-subtitle mb-2 text-muted text-end">[[${new java.text.DecimalFormat('$#,##0.00').format(auto.precio)}]]</h6>
+                            <a class="card-link" th:href="@{/carrito/agregar/} + ${auto.idAuto}">[[#{auto.comprar}]]</a>
+                            <p class="card-text">[[${auto.modelo}]]</p>                        
+                        </div>
                 </div>                
             </div>
             <div th:if="${autos == null or autos.empty}"  th:text="#{auto.no_mostrar}">
                 No tenemos lista de autos que mostrar...
             </div>
-        </div>
-        <div class="container">
-            <h2 th:text="#{index.titulo1}">Nuestras Casas</h2>            
+            <h2 th:text="#{index.titulo1}">Nuestras Casas</h2>         
             <div class="row row-cols-3" th:if="${casas != null and !casas.empty}">
                 <div class="card" th:each="casa : ${casas}" >
-               
-                    <div class="card-body">
-                        <h5 class="card-title">[[${casa.nombre}]]</h5>
-                        <h6 class="card-subtitle mb-2 text-muted text-end">[[${new java.text.DecimalFormat('¢#,##0.00').format(casa.precio)}]]</h6>
-                        <a class="card-link" th:href="@{/carrito/agregar/} + ${casa.idCasa}">[[#{casa.comprar}]]</a>
-                        <p class="card-text">[[${casa.detalle}]]</p>                        
-                    </div>
+                    <img th:src="${casa.imagen}" class="rounded mx-auto d-block" width="320" height="200">
+                        <div class="card-body">
+                            <h5 class="card-title">[[${casa.nombre}]]</h5>
+                            <h6 class="card-subtitle mb-2 text-muted text-end">[[${new java.text.DecimalFormat('$#,##0.00').format(casa.precio)}]]</h6>
+                            <a class="card-link" th:href="@{/carrito/agregar/} + ${casa.idCasa}">[[#{casa.comprar}]]</a>
+                            <p class="card-text">[[${casa.detalle}]]</p>                        
+                        </div>
                 </div>                
             </div>
             <div th:if="${casas == null or casas.empty}"  th:text="#{casa.no_mostrar}">
                 No tenemos lista de casas que mostrar...
             </div>
+            <h2 th:text="#{index.titulo2}">Nuestras Cabañas</h2>         
+            <div class="row row-cols-3" th:if="${cabanas != null and !cabanas.empty}">
+                <div class="card" th:each="cabana : ${cabanas}" >
+                    <img th:src="${cabana.imagen}" class="rounded mx-auto d-block" width="320" height="200">
+                        <div class="card-body">
+                            <h5 class="card-title">[[${cabana.nombre}]]</h5>
+                            <h6 class="card-subtitle mb-2 text-muted text-end">[[${new java.text.DecimalFormat('$#,##0.00').format(cabana.precio)}]]</h6>
+                            <a class="card-link" th:href="@{/carrito/agregar/} + ${cabana.idCabana}">[[#{cabana.comprar}]]</a>
+                            <p class="card-text">[[${cabana.detalle}]]</p>                        
+                        </div>
+                </div>                
+            </div>
+            <div th:if="${cabanas == null or cabanas.empty}"  th:text="#{cabana.no_mostrar}">
+                No tenemos lista de cabañas que mostrar...
+            </div>
         </div>
+
+
         <footer th:replace="layout/plantilla :: footer"/>
     </body>
 </html>

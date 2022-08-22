@@ -44,7 +44,7 @@ public class CabanaController {
     @GetMapping("/cabana/eliminar/{idCabana}")
     public String eliminarCabana(Cabana cabana) {
         cabanaService.delete(cabana);
-        return "/cabana/listado";
+        return "redirect:/cabana/listado";
 
     }
 }

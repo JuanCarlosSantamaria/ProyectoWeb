@@ -1,4 +1,3 @@
-
 package com.proyecto.service;
 
 import com.proyecto.dao.AutoDao;
@@ -25,11 +24,11 @@ public class AutoServiceImpl implements AutoService {
         return lista;
     }
 
-        @Override
+    @Override
     @Transactional(readOnly = true)
     public Auto getAuto(Auto auto) {
         return autoDao.findById(auto.getIdAuto()).orElse(null);
-        
+
     }
 
     @Override
@@ -44,6 +43,4 @@ public class AutoServiceImpl implements AutoService {
         autoDao.delete(auto);
     }
 
-
-  
 }

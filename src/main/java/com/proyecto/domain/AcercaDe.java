@@ -15,14 +15,14 @@ public class AcercaDe implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private long idAcercaDe;
-    private String nombre;
+    private String descripcion;
     private boolean activo;
 
     public AcercaDe() {
     }
 
-    public AcercaDe(String nombre, boolean activo) {
-        this.nombre = nombre;
+    public AcercaDe(String descripcion, boolean activo) {
+        this.descripcion = descripcion;
         this.activo = activo;
     }
     

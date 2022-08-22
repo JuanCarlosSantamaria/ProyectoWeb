@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.proyecto;
 
 import org.springframework.context.annotation.Configuration;
@@ -43,9 +40,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                              "/cliente/nuevo",           "/cliente/guardar",
                              "/cliente/modificar/**",    "cliente/eliminar/**")
                        .hasRole("ADMIN")
-                .antMatchers("/auto/listado",        "/casa/listado",
-                             "/cabana/listado")
-                       .hasAnyRole("ADMIN")
+                .antMatchers("/auto/listado","/casa/listado","/cabana/listado")
+                       .hasAnyRole("ADMIN", "USER")
                 .antMatchers("/")
                        .hasAnyRole("ADMIN", "USER")
                 .and()

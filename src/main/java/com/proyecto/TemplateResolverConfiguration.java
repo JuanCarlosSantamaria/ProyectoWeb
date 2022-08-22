@@ -47,7 +47,7 @@ public class TemplateResolverConfiguration {
     @Bean
     public SpringResourceTemplateResolver TemplateResolver_3() {
         SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
-        templateResolver.setPrefix("classpath:/cliente");
+        templateResolver.setPrefix("classpath:/cabana");
         templateResolver.setSuffix(".html");
         templateResolver.setTemplateMode(TemplateMode.HTML);
         templateResolver.setCharacterEncoding("UTF-8");

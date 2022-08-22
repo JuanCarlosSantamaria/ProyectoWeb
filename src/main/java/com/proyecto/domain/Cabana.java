@@ -24,16 +24,20 @@ public class Cabana implements Serializable {
     private double precio;
     private int existencias;
     private boolean activo;
+    private String imagen;
 
     public Cabana() {
     }
 
-    public Cabana(String nombre, String detalle, double precio, int existencias, boolean activo) {
+    public Cabana(String nombre, String detalle, double precio, int existencias, boolean activo, String imagen) {
         this.nombre = nombre;
         this.detalle = detalle;
         this.precio = precio;
         this.existencias = existencias;
         this.activo = activo;
+        this.imagen = imagen;
     }
+
+   
     
 }

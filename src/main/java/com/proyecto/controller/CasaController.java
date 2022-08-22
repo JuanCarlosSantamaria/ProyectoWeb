@@ -5,8 +5,7 @@ import com.proyecto.service.CasaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class CasaController {
@@ -44,7 +43,7 @@ public class CasaController {
     @GetMapping("/casa/eliminar/{idCasa}")
     public String eliminarCasa(Casa casa) {
         casaService.delete(casa);
-        return "/casa/listado";
+        return "redirect:/casa/listado";
 
     }
 }

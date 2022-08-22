@@ -37,9 +37,10 @@
                                             <th>#</th>
                                             <th th:text="#{auto.nombre}">Nombre</th>
                                             <th th:text="#{auto.modelo}">Modelo</th>
-                                            <th th:text="#{auto.precio}">Precio</th>
+                                            <th th:text="#{auto.precio}" sec:authorize="hasRole('ROLE_ADMIN')">Precio</th>
                                             <th th:text="#{auto.existencias}">Existencias</th>
-                                            
+                                            <th th:text="#{auto.activo}" sec:authorize="hasRole('ROLE_ADMIN')">Estado</th>
+                                            <th th:text="#{auto.imagen}">Imagen</th>
                                             <th></th>
                                             <th></th>
                                         </tr>
@@ -49,9 +50,11 @@
                                             <td>[[${contador.count}]]</td>
                                             <td>[[${auto.nombre}]]</td>
                                             <td>[[${auto.modelo}]]</td>
-                                            <td>[[${auto.precio}]]</td>
+                                            <td sec:authorize="hasRole('ROLE_ADMIN')">[[${auto.precio}]]</td>
                                             <td>[[${auto.existencias}]]</td>
-                                           
+                                            <td sec:authorize="hasRole('ROLE_ADMIN')">[[${auto.activo}]]</td>
+                                            <td><img th:src="${auto.imagen}" class="rounded mx-auto d-block" width="50" height="50"></td>
+
                                             <td class="text-end">[[${new java.text.DecimalFormat('$#,##0.00').format(auto.precio)}]]</td>
                                             <td>
                                                 <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/auto/eliminar/}+${auto.idAuto}"
@@ -104,7 +107,14 @@
                                     <label for="existencias" th:text="#{auto.existencias}">Existencias</label>
                                     <input type="number" class="form-control" name="existencias">
                                 </div>
-                    
+                                <div class="form-check">
+                                    <label class="form-check-label" for="activo" th:text="#{auto.activo}">Activo: </label>
+                                    <input type="checkbox" class="form-check-input" id="activo">
+                                </div>
+                                <div class="form-group">
+                                    <label for="imagen" th:text="#{auto.imagen}">Imagen</label>
+                                    <input type="text" class="form-control" name="imagen" required="true">
+                                </div>
                             </div>
                             <div class="modal-footer">
                                 <button class="btn btn-primary" type="submit" th:text="#{accion.guardar}">Guardar</button>
@@ -145,7 +155,15 @@
                                         <div class="form-group">
                                             <label for="existencias" th:text="#{auto.existencias}">Existencias: </label>
                                             <input type="number"  class="form-control" name="existencias" th:field="*{existencias}"/>
-                                        </div>                      
+                                        </div>   
+                                        <div class="form-check">
+                                            <label for="activo" th:text="#{auto.activo}">Activo: </label>
+                                            <input type="checkbox" class="form-check-input" name="activo" th:field="*{activo}" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="imagen" th:text="#{auto.imagen}">Imagen: </label>
+                                            <input type="text" class="form-control" name="imagen" th:field="*{imagen}"/>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -154,7 +172,7 @@
                 </div>
             </form>
         </section>
-                <section th:fragment="botonesEditar">
+        <section th:fragment="botonesEditar">
             <div id="actions" class="py-4 mb-4 bg-light">
                 <div class="container">
                     <div class="row">

@@ -20,16 +20,20 @@ public class Casa implements Serializable {
     private double precio;
     private int existencias;
     private boolean activo;
+    private String imagen;
 
     public Casa() {
     }
 
-    public Casa(String nombre, String detalle, double precio, int existencias, boolean activo) {
+    public Casa(String nombre, String detalle, double precio, int existencias, boolean activo, String imagen) {
         this.nombre = nombre;
         this.detalle = detalle;
         this.precio = precio;
         this.existencias = existencias;
         this.activo = activo;
+        this.imagen = imagen;
     }
+
     
+
 }

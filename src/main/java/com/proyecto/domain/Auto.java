@@ -20,17 +20,20 @@ public class Auto implements Serializable {
     private double precio;
     private int existencias;
     private boolean activo;
+    private String imagen;
 
     public Auto() {
     }
 
-    public Auto(String nombre, String modelo, double precio, int existencias, boolean activo) {
+    public Auto(String nombre, String modelo, double precio, int existencias, boolean activo, String imagen) {
         this.nombre = nombre;
         this.modelo = modelo;
         this.precio = precio;
         this.existencias = existencias;
         this.activo = activo;
+        this.imagen = imagen;
     }
 
+    
 }
 

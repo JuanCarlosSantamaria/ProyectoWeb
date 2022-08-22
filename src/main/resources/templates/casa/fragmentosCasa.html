@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
+
 <html>
     <head>
         <title>Car and Property Rentals</title>
@@ -41,9 +38,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                             <th>#</th>
                                             <th th:text="#{casa.nombre}">Nombre</th>
                                             <th th:text="#{casa.detalle}">Detalle</th>
-                                            <th th:text="#{casa.precio}">Precio</th>
+                                            <th th:text="#{casa.precio}" sec:authorize="hasRole('ROLE_ADMIN')">Precio</th>
                                             <th th:text="#{casa.existencias}">Existencias</th>
-
+                                            <th th:text="#{casa.activo}" sec:authorize="hasRole('ROLE_ADMIN')">Estado</th>
+                                            <th th:text="#{auto.imagen}">Imagen</th>
                                             <th></th>
                                             <th></th>
                                         </tr>
@@ -53,9 +51,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                             <td>[[${contador.count}]]</td>
                                             <td>[[${casa.nombre}]]</td>
                                             <td>[[${casa.detalle}]]</td>
-                                            <td>[[${casa.precio}]]</td>
+                                            <td sec:authorize="hasRole('ROLE_ADMIN')">[[${casa.precio}]]</td>
                                             <td>[[${casa.existencias}]]</td>
-
+                                            <td sec:authorize="hasRole('ROLE_ADMIN')" >[[${casa.activo}]]</td>
+                                            <td><img th:src="${casa.imagen}" class="rounded mx-auto d-block" width="50" height="50"></td>
                                             <td class="text-end">[[${new java.text.DecimalFormat('$#,##0.00').format(casa.precio)}]]</td>
                                             <td>
                                                 <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/casa/eliminar/}+${casa.idCasa}"
@@ -105,13 +104,24 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                     <input type="number" class="form-control" name="precio" required="true">
                                 </div>
                                 <div class="form-group">
-                                    <label for="existencia" th:text="#{casa.existencia}">Existencias</label>
-                                    <input type="number" class="form-control" name="existencia">
+                                    <label for="existencias" th:text="#{casa.existencias}">Existencias</label>
+                                    <input type="number" class="form-control" name="existencias">
                                 </div>
-
+                                <div class="form-check">
+                                    <label class="form-check-label" for="activo" th:text="#{casa.activo}">Activo: </label>
+                                    <input type="checkbox" class="form-check-input" id="activo">
+                                </div>
+                                <div class="form-group">
+                                    <label for="imagen" th:text="#{auto.imagen}">Imagen</label>
+                                    <input type="text" class="form-control" name="imagen" required="true">
+                                </div>
                             </div>
                             <div class="modal-footer">
                                 <button class="btn btn-primary" type="submit" th:text="#{accion.guardar}">Guardar</button>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label" for="activo" th:text="#{casa.activo}">Activo: </label>
+                                <input type="checkbox" class="form-check-input" id="activo">
                             </div>
                         </form>
                     </div>
@@ -139,17 +149,25 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                             <input type="text" class="form-control" name="nombre" th:field="*{nombre}"/>
                                         </div>
                                         <div class="form-group">
-                                            <label for="modelo" th:text="#{casa.modelo}">Modelo: </label>
-                                            <input type="text"  class="form-control" name="modelo" th:field="*{modelo}"/>
+                                            <label for="modelo" th:text="#{casa.detalle}">Detalle: </label>
+                                            <input type="text"  class="form-control" name="detalle" th:field="*{detalle}"/>
                                         </div>
                                         <div class="form-group">
                                             <label for="precio" th:text="#{casa.precio}">Precio: </label>
                                             <input type="number"  class="form-control" name="precio" th:field="*{precio}"/>
                                         </div>
                                         <div class="form-group">
-                                            <label for="existencia" th:text="#{casa.existencia}">Existencias: </label>
-                                            <input type="number"  class="form-control" name="existencia" th:field="*{existencia}"/>
-                                        </div>                      
+                                            <label for="existencias" th:text="#{casa.existencias}">Existencias: </label>
+                                            <input type="number"  class="form-control" name="existencias" th:field="*{existencias}"/>
+                                        </div> 
+                                        <div class="form-check">
+                                            <label for="activo" th:text="#{casa.activo}">Activo: </label>
+                                            <input type="checkbox" class="form-check-input" name="activo" th:field="*{activo}" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="imagen" th:text="#{auto.imagen}">Imagen: </label>
+                                            <input type="text" class="form-control" name="imagen" th:field="*{imagen}"/>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
