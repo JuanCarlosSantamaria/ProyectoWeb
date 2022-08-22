@@ -43,7 +43,7 @@ public class AutoController {
     @GetMapping("/auto/eliminar/{idAuto}")
     public String eliminarAuto(Auto auto) {
         autoService.delete(auto);
-        return "/auto/listado";
+        return "redirect:/auto/listado";
     }
 }
 

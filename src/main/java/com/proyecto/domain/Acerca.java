@@ -6,22 +6,22 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "acercade")
-public class AcercaDe implements Serializable {
+@Table(name = "acerca")
+public class Acerca implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    private long idAcercaDe;
+    private long idAcerca;
     private String descripcion;
     private boolean activo;
 
-    public AcercaDe() {
+    public Acerca() {
     }
 
-    public AcercaDe(String descripcion, boolean activo) {
+    public Acerca(String descripcion, boolean activo) {
         this.descripcion = descripcion;
         this.activo = activo;
     }

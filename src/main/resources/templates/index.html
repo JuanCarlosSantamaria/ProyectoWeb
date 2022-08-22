@@ -15,7 +15,7 @@
                         <div class="card-body">
                             <h5 class="card-title">[[${auto.nombre}]]</h5>
                             <h6 class="card-subtitle mb-2 text-muted text-end">[[${new java.text.DecimalFormat('$#,##0.00').format(auto.precio)}]]</h6>
-                            <a class="card-link" th:href="@{/carrito/agregar/} + ${auto.idAuto}">[[#{auto.comprar}]]</a>
+                            <a class="card-link" th:href="@{/auto/eliminar/}+${auto.idAuto}">[[#{auto.comprar}]]</a>
                             <p class="card-text">[[${auto.modelo}]]</p>                        
                         </div>
                 </div>                
@@ -30,7 +30,7 @@
                         <div class="card-body">
                             <h5 class="card-title">[[${casa.nombre}]]</h5>
                             <h6 class="card-subtitle mb-2 text-muted text-end">[[${new java.text.DecimalFormat('$#,##0.00').format(casa.precio)}]]</h6>
-                            <a class="card-link" th:href="@{/carrito/agregar/} + ${casa.idCasa}">[[#{casa.comprar}]]</a>
+                            <a class="card-link" th:href="@{/casa/eliminar/}+${casa.idCasa}" >[[#{casa.comprar}]]</a>
                             <p class="card-text">[[${casa.detalle}]]</p>                        
                         </div>
                 </div>                
@@ -45,7 +45,7 @@
                         <div class="card-body">
                             <h5 class="card-title">[[${cabana.nombre}]]</h5>
                             <h6 class="card-subtitle mb-2 text-muted text-end">[[${new java.text.DecimalFormat('$#,##0.00').format(cabana.precio)}]]</h6>
-                            <a class="card-link" th:href="@{/carrito/agregar/} + ${cabana.idCabana}">[[#{cabana.comprar}]]</a>
+                            <a class="card-link" th:href="@{/cabana/eliminar/}+${cabana.idCabana}">[[#{cabana.comprar}]]</a>
                             <p class="card-text">[[${cabana.detalle}]]</p>                        
                         </div>
                 </div>                

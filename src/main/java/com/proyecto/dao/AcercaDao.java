@@ -4,9 +4,9 @@
  */
 package com.proyecto.dao;
 
-import com.proyecto.domain.AcercaDe;
+import com.proyecto.domain.Acerca;
 import org.springframework.data.repository.CrudRepository;
 
-public interface AcercaDeDao extends CrudRepository<AcercaDe, Long>{
+public interface AcercaDao extends CrudRepository<Acerca, Long>{
     
 }

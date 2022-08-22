@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Car and Property Rentals</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <section th:fragment="listadoAcercas" id="acercas">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>[[#{acerca.descripcion}]]</h4>
+                            </div>
+                            <div th:if="${acercas != null and !acercas.empty}">
+                                <table class="table table-stryped">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th th:text="#{acerca.descripcion}">Acerca De</th>
+                                        </tr>
+                                    </thead>
+                                    <table class="table table-stryped">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th th:text="#{acerca.descripcion}">Acerca De</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section th:fragment="editarAcerca">            
+            <form method="POST"
+                  th:action="@{/acerca/guardar}"
+                  th:object="${acerca}"
+                  class="was-validated">
+                <input type="hidden" name="idAcerca" th:field="*{idAcerca}"/>
+                <section th:replace="acerca/fragmentosAcerca :: botonesEditar"/> 
+                <div id="details">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4>[[#{accion.actualizar}]]</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label for="descripcion" th:text="#{acerca.descripcion}">Descripcion: </label>
+                                            <input type="text" class="form-control" name="descripcion" th:field="*{descripcion}"/>
+                                        </div>                     
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </section>
+
+        <section th:fragment="botonesEditar">
+            <div id="actions" class="py-4 mb-4 bg-light">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <a th:href="@{/acerca/listado}" class="btn btn-ligth btn-block">
+                                <i class="fas fa-arrow-left"></i> [[#{accion.regresar}]]
+                            </a>
+                        </div>
+                        <div class="col-md-3">
+                            <button type="submit" class="btn btn-success btn-block">
+                                <i class="fas fa-check"></i> [[#{accion.guardar}]]
+                            </button>
+                        </div>
+                        <div class="col-md-3">
+                            <a th:href="@{/acerca/eliminar/}+${acerca.idAcerca}"
+                               class="btn btn-danger btn-block">
+                                <i class="fas fa-trash"></i> [[#{accion.eliminar}]]
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>
