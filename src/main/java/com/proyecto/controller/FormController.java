@@ -6,13 +6,12 @@ import org.springframework.web.bind.annotation.*;
 
 
 @Controller
-public class AcercaController {
+public class FormController {
 
     
-    @GetMapping("/nosotros")
+    @GetMapping("/form")
     public String inicio(Model model) {
-        return "/nosotros";
+        return "/form";
     }
 
 }
-

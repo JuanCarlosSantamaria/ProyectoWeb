@@ -23,16 +23,34 @@
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                         <ul class="navbar-nav">
                             <li class="nav-item px-2">
-                                <a class="nav-menu-link nav-link" th:href="@{/cabana/listado}"
-                                   th:text="#{plantilla.cabanas}">Cabana</a>
+                                <a class="nav-menu-link nav-link" th:href="@{/cabana/listado}">
+                                    <i class="fas fa-house-user"></i>
+                                    <span th:text="#{plantilla.cabanas}"></span>                                
+                                </a>
                             </li>
                             <li class="nav-item px-2">
-                                <a class="nav-menu-link nav-link" th:href="@{/casa/listado}"
-                                   th:text="#{plantilla.casas}">Casas</a>
+                                <a class="nav-menu-link nav-link" th:href="@{/casa/listado}">
+                                    <i class="fas fa-home"></i>
+                                    <span th:text="#{plantilla.casas}"></span>                                
+                                </a>
                             </li>
                             <li class="nav-item px-2">
-                                <a class="nav-menu-link nav-link" th:href="@{/auto/listado}"
-                                   th:text="#{plantilla.autos}">Autos</a>
+                                <a class="nav-menu-link nav-link" th:href="@{/auto/listado}">
+                                    <i class="fas fa-car"></i>
+                                    <span th:text="#{plantilla.autos}"></span>                                
+                                </a>
+                            </li>
+                            <li class="nav-item px-2">
+                                <a class="nav-menu-link nav-link" th:href="@{/nosotros}">
+                                    <i class="fas fa-info"></i>
+                                    <span th:text="#{plantilla.acerca}"></span>                                
+                                </a>
+                            </li>
+                            <li class="nav-item px-2">
+                                <a class="nav-menu-link nav-link" th:href="@{/form}">
+                                    <i class="fas fa-file"></i>
+                                    <span th:text="#{plantilla.formulario}"></span>                                
+                                </a>
                             </li>
                         </ul>
                         <ul sec:authorize="isAuthenticated()" class="navbar-nav ml-auto">
@@ -70,18 +88,18 @@
 
         <footer th:fragment="footer" class="position-fixed bottom-0 start-0 end-0 bg-info text-white mt-5 p-2">
 
-         <footer th:fragment="footer" class="position-fixed bottom-0 start-0 end-0 text-dark mt-5 p-2" style="background:#BAF02D">
-             
-         <footer th:fragment="footer" class="position-fixed bottom-0 start-0 end-0 text-dark mt-5 p-2" style="background:#BAF02D">
-            <div class="container">
-                <div class="col">
-                    <p class="lead text-center">
-                        &COPY [[#{plantilla.derechos}]]
-                        <a th:href="@{/(lang=es)}">ES</a> | 
-                        <a th:href="@{/(lang=en)}">EN</a>
-                    </p>
-                </div>
-            </div>
-        </footer>
-    </body>
-</html>
+            <footer th:fragment="footer" class="position-fixed bottom-0 start-0 end-0 text-dark mt-5 p-2" style="background:#BAF02D">
+
+                <footer th:fragment="footer" class="position-fixed bottom-0 start-0 end-0 text-dark mt-5 p-2" style="background:#BAF02D">
+                    <div class="container">
+                        <div class="col">
+                            <p class="lead text-center">
+                                &COPY [[#{plantilla.derechos}]]
+                                <a th:href="@{/(lang=es)}">ES</a> | 
+                                <a th:href="@{/(lang=en)}">EN</a>
+                            </p>
+                        </div>
+                    </div>
+                </footer>
+                </body>
+                </html>

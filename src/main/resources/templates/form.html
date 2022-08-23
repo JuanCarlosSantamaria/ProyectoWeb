@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head th:replace="layout/plantilla :: head">
+        <title>Car and Property Rentals</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <header th:replace="layout/plantilla :: header"/>
+        <section id="contenido">
+        <h2>Formulario</h2>
+        <a th:href="@{/}">Regresar</a>
+        <br>
+            <br>
+                <form action="#">
+                    <label>Ingrese su nombre: </label><input type="text" name="nombre" placeholder="Digite su nombre" size="20" ><br> 
+                            <label>Ingrese su correo electrónico: </label><input type="text" name="email" placeholder="Digite el correo"><br> 
+                                    <label>Escriba su consulta: </label><input type="text" name="text" placeholder="Escriba su consulta"><br>
+
+                                            <input type="submit" name="Submit" value="Submit"><br>
+                                                    </form>
+                </section>
+        <img src="/images/Cartago.jpg" width=100% height=40% />
+                                                    <footer th:replace="layout/plantilla :: footer"/>
+                                                    </body>
+                                                    </html>
